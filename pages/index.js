@@ -59,6 +59,7 @@ const generateTodo = (data) => {
 };
 
 addTodoButton.addEventListener("click", () => {
+  newTodoValidator.resetValidation();
   openModal(addTodoPopup);
 });
 
@@ -83,7 +84,11 @@ addTodoForm.addEventListener("submit", (evt) => {
   const values = { name, date, id };
   const todo = generateTodo(values);
   todosList.append(todo);
+
+  newTodoValidator.resetValidation();
   closeModal(addTodoPopup);
+
+  addTodoForm.reset();
 });
 
 initialTodos.forEach((item) => {
