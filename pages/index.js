@@ -23,9 +23,7 @@ addTodoForm.addEventListener("submit", (evt) => {
   const dateInput = evt.target.date.value;
 
   const date = new Date(dateInput);
-  if (isNaN(date)) {
-    date = null;
-  } else {
+  if (date && !isNaN(date)) {
     date.setMinutes(date.getMinutes() + date.getTimezoneOffset());
   }
 
