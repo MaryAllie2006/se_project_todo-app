@@ -46,8 +46,8 @@ class Todo {
     
 
     todoNameEl.textContent = this._data.name;
-
     todoDate.textContent = this._dueDate();
+
     this._generateCheckBoxEl();
     this._setEventListeners();
 

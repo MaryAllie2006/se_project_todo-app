@@ -22,6 +22,8 @@ addTodoForm.addEventListener("submit", (evt) => {
   const name = evt.target.name.value;
   const dateInput = evt.target.date.value;
 
+ 
+
   const date = new Date(dateInput);
   if (date && !isNaN(date)) {
     date.setMinutes(date.getMinutes() + date.getTimezoneOffset());
@@ -65,29 +67,6 @@ addTodoCloseBtn.addEventListener("click", () => {
   closeModal(addTodoPopup);
 });
 
-addTodoForm.addEventListener("submit", (evt) => {
-  evt.preventDefault();
-  const name = evt.target.name.value;
-  const dateInput = evt.target.date.value;
-
-  // Create a date object and adjust for timezone
-  const date = new Date(dateInput);
-  if (isNaN(date)) {
-    date - null;
-  } else {
-    date.setMinutes(date.getMinutes() + date.getTimezoneOffset());
-  }
-
-  const id = uuidv4();
-  const values = { name, date, id };
-  const todo = generateTodo(values);
-  todosList.append(todo);
-
-  newTodoValidator.resetValidation();
-  closeModal(addTodoPopup);
-
-
-});
 
 initialTodos.forEach((item) => {
   
