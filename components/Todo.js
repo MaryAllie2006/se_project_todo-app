@@ -1,10 +1,15 @@
 class Todo {
-  constructor(data, selector) {
+  constructor(data, selector, handleCheck, handleDelete) {
     this._data = data;
     this._templateElement = document.querySelector(selector);
+    this._handleCheck = handleCheck;
+    this._handleDelete = handleDelete;
+    //this._handleTodo = handleTodo;
   }
 
   _dueDate() {
+    this._todoDate = this._todoElement.querySelector(".todo__date");
+    this._dueDate = new Date(this._data.date);
     if (this._data.date) {
       const dueDate = new Date(this._data.date);
       if (!isNaN(dueDate)) {
@@ -20,6 +25,7 @@ class Todo {
   _setEventListeners() {
     this._todoCheckboxEl.addEventListener("change", () => {
       this._data.completed = !this._data.completed;
+      this._handleCheck(this._data.completed);
     });
 
     const deleteButton = this._todoElement.querySelector(".todo__delete-btn");
@@ -41,14 +47,14 @@ class Todo {
       .querySelector(".todo")
       .cloneNode(true);
 
-    const todoNameEl = this._todoElement.querySelector(".todo__name");
-    const todoDate = this._todoElement.querySelector(".todo__date");
-    
-
-    todoNameEl.textContent = this._data.name;
-    todoDate.textContent = this._dueDate();
+    this._todoNameEl = this._todoElement.querySelector(".todo__name");
+    this._todoLabel = this._todoElement.querySelector(".todo__label");
+    this._todoDate = this._todoElement.querySelector(".todo__date");
+    this._todoDeleteBtn = this._todoElement.querySelector(".todo__delete-btn");
+    this._todoNameEl.textContent = this._data.name;
 
     this._generateCheckBoxEl();
+    this._dueDate();
     this._setEventListeners();
 
     return this._todoElement;
