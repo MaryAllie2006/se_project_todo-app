@@ -30,6 +30,7 @@ class Todo {
 
     const deleteButton = this._todoElement.querySelector(".todo__delete-btn");
     deleteButton.addEventListener("click", () => {
+      this._handleDelete(this._data.completed); 
       this._todoElement.remove();
     });
   }
