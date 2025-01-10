@@ -12,9 +12,6 @@ class formValidator {
   resetValidation() {
     this._formElement.reset();
     this._inputList.forEach((inputElement) => {
-      const errorElement = this._formElement.querySelector(
-        `#${inputElement.id}-error`
-      );
       this._hideInputError(inputElement);
     });
 
