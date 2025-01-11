@@ -28,6 +28,7 @@ const addTodoPopup = new PopupWithForm({
     const todo = generateTodo(values);
 
     section.addItem(todo); 
+    section.renderTodos();
     todoCounter.updateTotal(true);
 
     addTodoPopup.close();
