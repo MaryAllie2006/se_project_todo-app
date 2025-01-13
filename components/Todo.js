@@ -9,8 +9,11 @@ class Todo {
 
   _dueDate() {
     this._todoDate = this._todoElement.querySelector(".todo__date");
-    this._dueDate = new Date(this._data.date);
-  
+      return `Due: ${new Date(this._data.date).toLocaleString("en-US", {
+        year: "numeric",
+        month: "short",
+        day: "numeric",
+      })}`;
     
   }
   _setEventListeners() {
@@ -45,7 +48,7 @@ class Todo {
     this._todoDueDate.textContent = this._dueDate(); 
   
     this._generateCheckBoxEl();
-    //this._dueDate(); 
+    this._dueDate(); 
     this._setEventListeners();
   
     return this._todoElement;
